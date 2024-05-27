@@ -1,0 +1,27 @@
+.online {
+  color: green;
+  font-size: 17px;
+}
+
+.offline {
+  color: red;
+  font-size: 17px;
+}
+
+.element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.avatar {
+  width: 80px;
+}
+
+.name {
+  font-size: 25px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
