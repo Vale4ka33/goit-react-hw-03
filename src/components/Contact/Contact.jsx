@@ -2,7 +2,7 @@ import css from "./Contact.module.css";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
 
-const Contact = ({ name, number }) => {
+const Contact = ({ id, name, number, onDelete }) => {
   return (
     <div className={css.contactContainer}>
       <div>
@@ -15,7 +15,9 @@ const Contact = ({ name, number }) => {
           <span>{number}</span>
         </div>
       </div>
-      <button className={css.btn}>Delete</button>
+      <button className={css.btn} onClick={() => onDelete(id)}>
+        Delete
+      </button>
     </div>
   );
 };
