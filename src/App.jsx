@@ -1,23 +1,31 @@
-import Profile from "./components/Profile/Profile";
-import FriendList from "./components/FriendList/FriendList";
-import TransactionHistory from "./components/TransactionHistory/TransactionHistory";
-import usersData from "./data/userData.json";
-import friends from "./data/friends.json";
-import transactions from "./data/transaction.json";
+import ContactList from "./components/ContactList/ContactList";
+import SearchBox from "./components/SearchBox/SearchBox";
+import ContactForm from "./components/ContactForm/ContactForm";
+
+import { useState } from "react";
+import contacts from "./data/contacts.json";
 
 function App() {
+  const [contactList, setContactList] = useState(contacts);
+  const [searchContact, setSearchContact] = useState("");
+
+  const searchData = contactList.filter((contact) =>
+    contact.name.toLocaleLowerCase().includes(searchContact.toLocaleLowerCase())
+  );
+
+  const newContact = (someContact) => {
+    setContactList((prevContacts) => {
+      return [...prevContacts, someContact];
+    });
+  };
+
   return (
-    <>
-      <Profile
-        name={usersData.username}
-        tag={usersData.tag}
-        location={usersData.location}
-        image={usersData.avatar}
-        stats={usersData.stats}
-      />
-      <FriendList friends={friends} />
-      <TransactionHistory items={transactions} />
-    </>
+    <div>
+      <h1>Phonebook</h1>
+      <ContactForm onAdd={newContact} />
+      <SearchBox value={searchContact} onChange={setSearchContact} />
+      <ContactList contactList={searchData} />
+    </div>
   );
 }
 

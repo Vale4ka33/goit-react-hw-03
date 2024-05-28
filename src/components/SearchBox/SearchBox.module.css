@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.searchInput {
+  border: 1px solid gray;
+  border-radius: 4px;
+  height: 20px;
+}
+
+.searchInput:focus {
+  border-color: rgb(78, 78, 228) !important;
+}
